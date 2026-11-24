@@ -3,10 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROBADOR VIRTUAL</title>
+    <title>V-FIT STUDIO | Probador Virtual Inteligente</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>PROBADOR VIRTUAL</h1>
+
+    <!-- Fondos ambientales animados (Orbes de luz) -->
+    <div class="ambient-light light-1"></div>
+    <div class="ambient-light light-2"></div>
+
+    <!-- Navegación Minimalista -->
+    <header class="navbar">
+        <div class="logo">V-FIT<span>.AI</span></div>
+        <nav>
+            <a href="#como-funciona">Tecnología</a>
+            <a href="#selector-genero" class="btn-nav">Iniciar Prueba</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">EXPERIENCIA VIRTUAL 3D • SIN REGISTRO</span>
+            <h1>TU ESTILO, <br><span class="gradient-text">SIN LÍMITES FÍSICOS</span></h1>
+            <p>Visualiza cómo te queda cualquier prenda antes de decidir. Sube tu foto, calibra tus medidas biométricas y fusiona tu ropa favorita en segundos.</p>
+            <a href="#selector-genero" class="cta-primary">
+                <span>Comenzar Experiencia</span>
+                <div class="liquid-glow"></div>
+            </a>
+        </div>
+        
+        <!-- Visualización abstracta de escaneo -->
+        <div class="hero-visual">
+            <div class="scanner-card">
+                <div class="scan-line"></div>
+                <div class="wireframe-silhouette"></div>
+                <div class="data-tag tag-1">IA BIOMÉTRICA</div>
+                <div class="data-tag tag-2">AJUSTE REAL</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Principal Interactiva (Controlada 100% por CSS) -->
+    <main id="selector-genero" class="studio-container">
+        
+        <!-- Radios ocultos que controlan el estado de toda la aplicación -->
+        <input type="radio" name="gender-select" id="gender-male" class="state-radio">
+        <input type="radio" name="gender-select" id="gender-female" class="state-radio">
+
+        <!-- PASO 1: Selección de Género -->
+        <div class="step-header">
+            <span class="step-number">01</span>
+            <h2>Selecciona tu perfil biométrico</h2>
+            <p>Elige una opción para calibrar el motor de ajuste y desplegar tu cabina virtual.</p>
+        </div>
+
+        <div class="gender-grid">
+            <label for="gender-male" class="gender-card male-card">
+                <div class="card-glow"></div>
+                <div class="gender-icon">♂</div>
+                <h3>HOMBRE</h3>
+                <p>Calibración de hombros, torso y caída masculina</p>
+                <span class="select-pill">Seleccionar Perfil →</span>
+            </label>
+
+            <label for="gender-female" class="gender-card female-card">
+                <div class="card-glow"></div>
+                <div class="gender-icon">♀</div>
+                <h3>MUJER</h3>
+                <p>Calibración de silueta, cintura y caída femenina</p>
+                <span class="select-pill">Seleccionar Perfil →</span>
+            </label>
+        </div>
+
+        <!-- PASO 2: Cabina Virtual (Se despliega automáticamente al elegir género) -->
+        <section id="cabina-virtual" class="fitting-room">
+            <div class="room-divider"></div>
+            
+            <div class="step-header">
+                <span class="step-number">02</span>
+                <h2>Tu Cabina de Prueba Única</h2>
+                <div class="active-profile-badge">
+                    <span class="badge-male">● Modo Masculino Activado</span>
+                    <span class="badge-female">● Modo Femenino Activado</span>
+                </div>
+            </div>
+
+            <form class="studio-workspace" action="#resultado-simulado">
+                
+                <!-- Columna 1: Carga de Fotografía del Usuario -->
+                <div class="glass-panel upload-panel">
+                    <h3>1. Tu Fotografía Base</h3>
+                    <p class="panel-desc">Sube una foto de cuerpo completo con buena iluminación.</p>
+                    
+                    <label for="user-photo" class="drop-zone">
+                        <input type="file" id="user-photo" accept="image/*" required>
+                        <div class="drop-content">
+                            <div class="pulse-ring"></div>
+                            <span class="upload-icon">📸</span>
+                            <strong>Haz clic o arrastra tu foto aquí</strong>
+                            <small>JPG, PNG o WEBP (Máx. 15MB)</small>
+                        </div>
+                        <div class="laser-grid"></div>
+                    </label>
+                </div>
+
+                <!-- Columna 2: Parámetros Biométricos -->
+                <div class="glass-panel metrics-panel">
+                    <h3>2. Tus Medidas Exactas</h3>
+                    <p class="panel-desc">Ajusta tus datos para calcular la proporción de la tela.</p>
+
+                    <div class="input-group">
+                        <label for="age">Edad (años)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="age" min="12" max="99" placeholder="Ej. 25" required>
+                            <span class="unit">AÑOS</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="weight">Peso Corporal</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="weight" min="30" max="250" step="0.5" placeholder="Ej. 70" required>
+                            <span class="unit">KG</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="height">Estatura</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="height" min="100" max="230" placeholder="Ej. 175" required>
+                            <span class="unit">CM</span>
+                        </div>
+                    </div>
+
+                    <!-- Selector visual de complexión -->
+                    <div class="fit-preference">
+                        <span>Corte preferido:</span>
+                        <div class="fit-pills">
+                            <label><input type="radio" name="fit" checked><span>Slim</span></label>
+                            <label><input type="radio" name="fit"><span>Regular</span></label>
+                            <label><input type="radio" name="fit"><span>Oversize</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 3: Carga de Prendas Únicas -->
+                <div class="glass-panel garments-panel">
+                    <h3>3. Tus Prendas a Probar</h3>
+                    <p class="panel-desc">Sube fotos de las prendas que deseas combinar (sin límite de marca).</p>
+
+                    <div class="garment-slots">
+                        <label class="garment-slot">
+                            <input type="file" accept="image/*">
+                            <span class="slot-icon">👕</span>
+                            <div class="slot-info">
+                                <strong>Prenda Superior</strong>
+                                <small>Camiseta, chaqueta, top, vestido...</small>
+                            </div>
+                            <span class="add-plus">+</span>
+                        </label>
+
+                        <label class="garment-slot">
+                            <input type="file" accept="image/*">
+                            <span class="slot-icon">👖</span>
+                            <div class="slot-info">
+                                <strong>Prenda Inferior</strong>
+                                <small>Pantalón, falda, shorts...</small>
+                            </div>
+                            <span class="add-plus">+</span>
+                        </label>
+
+                        <label class="garment-slot">
+                            <input type="file" accept="image/*">
+                            <span class="slot-icon">👟</span>
+                            <div class="slot-info">
+                                <strong>Calzado o Accesorio</strong>
+                                <small>Zapatillas, gafas, gorra...</small>
+                            </div>
+                            <span class="add-plus">+</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Botón de Procesamiento -->
+                <div class="action-bar">
+                    <button type="submit" class="btn-generate">
+                        <span class="sparkle">✨</span> GENERAR PRUEBA VIRTUAL ÚNICA
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- Pantalla de Renderizado / Resultado (Se activa con :target al enviar) -->
+            <div id="resultado-simulado" class="render-modal">
+                <div class="render-box">
+                    <div class="hologram-loader"></div>
+                    <h3>PROCESANDO TU SILUETA...</h3>
+                    <p>Tus medidas y prendas han sido cargadas en el entorno de renderizado.</p>
+                    <a href="#cabina-virtual" class="btn-close-modal">Volver a editar prendas</a>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Sección Informativa -->
+    <section id="como-funciona" class="features-strip">
+        <div class="feature-item">
+            <h4>0% Comercio, 100% Estilo</h4>
+            <p>No vendemos ropa. Prueba prendas de cualquier tienda, armario o diseño propio.</p>
+        </div>
+        <div class="feature-item">
+            <h4>Privacidad Total</h4>
+            <p>Tus fotografías y medidas biométricas se utilizan únicamente para tu sesión.</p>
+        </div>
+        <div class="feature-item">
+            <h4>Física de Telas</h4>
+            <p>Simulación inteligente basada en tu altura, peso y complexión real.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>V-FIT STUDIO © 2026 — Experiencia de Probador Virtual</p>
+    </footer>
+
 </body>
 </html>
